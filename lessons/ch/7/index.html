@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Hello, world!</h1>
+        <p id="boldText" class="blueText">This is an example</p>
+        <p id="hiddenText" class="blueText" style="display: none">website using HTML</p>
+        <button onClick="showText()">Click me!</button>
+        <script>
+            function showText() {
+                document.getElementById("hiddenText").style.display = "block";
+            }
+        </script>
+    </body>
+</html>
