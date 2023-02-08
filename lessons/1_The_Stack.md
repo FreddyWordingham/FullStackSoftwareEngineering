@@ -1,15 +1,60 @@
 # The Stack
 
-- [The Stack](#the-stack)
-  - [Introduction](#introduction)
-  - [The Stack](#the-stack-1)
-    - [Front-end](#front-end)
-      - [HTML](#html)
-      - [CSS](#css)
-      - [JavaScript](#javascript)
-  - [What is a full-stack engineer?](#what-is-a-full-stack-engineer)
-    - [What is a software engineer?](#what-is-a-software-engineer)
-    - [What is a full-stack engineer?](#what-is-a-full-stack-engineer-1)
+-   [The Stack](#the-stack)
+    -   [Tables](#tables)
+    -   [Introduction](#introduction)
+    -   [The Stack](#the-stack-1)
+        -   [Front-end](#front-end)
+            -   [HTML](#html)
+            -   [CSS](#css)
+            -   [JavaScript](#javascript)
+    -   [What is a full-stack engineer?](#what-is-a-full-stack-engineer)
+        -   [What is a software engineer?](#what-is-a-software-engineer)
+        -   [What is a full-stack engineer?](#what-is-a-full-stack-engineer-1)
+
+## Tables
+
+| Name                                                                  | Description               |
+| --------------------------------------------------------------------- | ------------------------- |
+| [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)             | HyperText Markup Language |
+| [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)               | Cascading Style Sheets    |
+| [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) | A programming language    |
+| [Python](https://www.python.org/)                                     | A programming language    |
+| [C++](https://isocpp.org/)                                            | A programming language    |
+| [Rust](https://www.rust-lang.org/)                                    | A programming language    |
+
+| Tag        | Description       | Example                                                     |
+| ---------- | ----------------- | ----------------------------------------------------------- |
+| `<p>`      | A paragraph       | `<p>This is a paragraph</p>`                                |
+| `<input>`  | A text input      | `<input type="text" />`                                     |
+| `<button>` | A button          | `<button>Click me!</button>`                                |
+| `<style>`  | A style tag       | `<style>body { background-color: red; }</style>`            |
+| `<div>`    | A division        | `<div>This is a division</div>`                             |
+| `<span>`   | A span            | `<span>This is a span</span>`                               |
+| `<ul>`     | An unordered list | `<ul><li>Item 1</li><li>Item 2</li></ul>`                   |
+| `<ol>`     | An ordered list   | `<ol><li>Item 1</li><li>Item 2</li></ol>`                   |
+| `<table>`  | A table           | `<table><tr><td>Cell 1</td><td>Cell 2</td></tr></table>`    |
+| `<form>`   | A form            | `<form><input type="text" /><button>Submit</button></form>` |
+
+| CSS Property  | Description               | Example                                  |
+| ------------- | ------------------------- | ---------------------------------------- |
+| `color`       | The color of text         | `color: red;`                            |
+| `background`  | The background color      | `background: blue;`                      |
+| `font-size`   | The size of the font      | `font-size: 20px;`                       |
+| `font-family` | The font family           | `font-family: "Times New Roman", serif;` |
+| `width`       | The width of an element   | `width: 100px;`                          |
+| `height`      | The height of an element  | `height: 100px;`                         |
+| `margin`      | The margin of an element  | `margin: 10px;`                          |
+| `padding`     | The padding of an element | `padding: 10px;`                         |
+| `border`      | The border of an element  | `border: 1px solid black;`               |
+
+| CSS Selector      | Description                       | Example                     |
+| ----------------- | --------------------------------- | --------------------------- |
+| `*`               | All elements                      | `* { color: red; }`         |
+| `p`               | All paragraph elements            | `p { color: red; }`         |
+| `#id`             | An element with a specific id     | `#my-id { color: red; }`    |
+| `.class`          | An element with a specific class  | `.my-class { color: red; }` |
+| `element element` | An element inside another element | `div p { color: red; }`     |
 
 ## Introduction
 
