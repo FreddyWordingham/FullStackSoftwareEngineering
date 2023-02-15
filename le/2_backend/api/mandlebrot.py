@@ -24,8 +24,8 @@ def sample_area(xmin, xmax, ymin, ymax, width=1000, height=1000, max_iters=100):
     return mandelbrot_set
 
 
-def plot(xmin, xmax, ymin, ymax, width=1000, height=1000, max_iters=100):
+def plot(filename, xmin, xmax, ymin, ymax, width=1000, height=1000, max_iters=100):
     mandelbrot_set = sample_area(xmin, xmax, ymin, ymax, width, height, max_iters)
     plt.imshow(mandelbrot_set.T, cmap="magma", extent=(xmin, xmax, ymin, ymax))
     plt.axis("off")
-    plt.show()
+    plt.savefig(filename, bbox_inches="tight", pad_inches=0)
