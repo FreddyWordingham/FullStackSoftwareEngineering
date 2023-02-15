@@ -36,7 +36,7 @@ async def col(re: float, im: float, start_hex: str, end_hex: str):
 
 
 @app.get("/area/{min_re}/{max_re}/{min_im}/{max_im}")
-async def sample(min_re: float, max_re: float, min_im: float, max_im: float):
+async def area(min_re: float, max_re: float, min_im: float, max_im: float):
     print(min_re, max_re, min_im, max_im)
     ans = mandlebrot.sample_area(min_re, max_re, min_im, max_im)
     return ans.tolist()
