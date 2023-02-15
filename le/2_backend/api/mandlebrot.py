@@ -1,5 +1,6 @@
 import numpy as np
-import matplotlib.pyplot as plt
+
+from . import colour
 
 
 def sample(c, max_iters=100):
@@ -14,9 +15,9 @@ def sample(c, max_iters=100):
         return n
 
 
-def sample_area(xmin, xmax, ymin, ymax, width=1000, height=1000, max_iters=100):
-    x = np.linspace(xmin, xmax, width)
-    y = np.linspace(ymin, ymax, height)
+def sample_area(x_min, x_max, y_min, y_max, width=1000, height=1000, max_iters=100):
+    x = np.linspace(x_min, x_max, width)
+    y = np.linspace(y_min, y_max, height)
     mandelbrot_set = np.empty((height, width))
     for i in range(height):
         for j in range(width):
@@ -24,8 +25,18 @@ def sample_area(xmin, xmax, ymin, ymax, width=1000, height=1000, max_iters=100):
     return mandelbrot_set
 
 
-def plot(filename, xmin, xmax, ymin, ymax, width=1000, height=1000, max_iters=100):
-    mandelbrot_set = sample_area(xmin, xmax, ymin, ymax, width, height, max_iters)
-    plt.imshow(mandelbrot_set.T, cmap="magma", extent=(xmin, xmax, ymin, ymax))
-    plt.axis("off")
-    plt.savefig(filename, bbox_inches="tight", pad_inches=0)
+def plot(
+    x_min,
+    x_max,
+    y_min,
+    y_max,
+    start_hex,
+    end_hex,
+    width=1000,
+    height=1000,
+    max_iters=100,
+):
+    mandelbrot_set = sample_area(x_min, x_max, y_min, y_max, width, height, max_iters)
+    return np.vectorize(
+        lambda x: colour.interpolate_linear(start_hex, end_hex, x / max_iters)
+    )(mandelbrot_set)

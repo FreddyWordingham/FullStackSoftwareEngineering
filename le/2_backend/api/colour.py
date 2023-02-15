@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def interpolate_linear(start_hex, end_hex, fraction):
     # Convert the hexadecimal colours to RGB values
     start_rgb = tuple(int(start_hex[i : i + 2], 16) for i in (0, 2, 4))
@@ -10,3 +13,7 @@ def interpolate_linear(start_hex, end_hex, fraction):
 
     # Convert the interpolated RGB values back to a hexadecimal colour
     return "#{:02x}{:02x}{:02x}".format(r, g, b)
+
+
+def hex_to_rgb(arr):
+    np.vectorize(lambda x: tuple(int(x[i : i + 2], 16) for i in (0, 2, 4)))(arr)
