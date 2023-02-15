@@ -9,6 +9,6 @@ async def index():
     return "Hello, world!"
 
 
-@app.get("/{name}")
+@app.get("/hello/{name}")
 async def hello(name: str):
     return f"Hello, {name}!"
