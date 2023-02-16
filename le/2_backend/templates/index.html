@@ -13,30 +13,12 @@
     </div>
     <p></p>
     <div>
-        <button id="submit" style="width: 100%" onClick="sampleMandelbrot()">Submit</button>
+        <button id="submit" style="width: 100%" onClick="sample()">Submit</button>
     </div>
     <hr />
     <div>
         <p>Result:<span id="result" class="float-right"></span></p>
     </div>
 </div>
-
-<script>
-    function sampleMandelbrot() {
-        const real = document.getElementById("real").value;
-        const imag = document.getElementById("imag").value;
-
-        const url = `http://localhost:8000/sample/${real}/${imag}`;
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                document.getElementById("result").innerHTML = data;
-            })
-            .catch((error) => {
-                console.log("ERROR!");
-                console.log(error);
-            });
-    }
-</script>
 
 {% endblock %}
