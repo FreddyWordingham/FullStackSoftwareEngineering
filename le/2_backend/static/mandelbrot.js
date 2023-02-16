@@ -86,8 +86,6 @@ function image() {
         .then((response) => response.blob())
         .then((blob) => {
             const objectURL = URL.createObjectURL(blob);
-            console.log(objectURL);
-            document.getElementById("sdfgdg").src = objectURL;
             document.body.style.backgroundImage = `url(${objectURL})`;
         })
         .catch((error) => {

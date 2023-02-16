@@ -1,7 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
 <div>
-    <h1>Hello, world!</h1>
     <div style="display: flex">
         <div style="margin: 10px">{% include "components/position.html" %}</div>
         <div style="margin: 10px">{% include "components/colour.html" %}</div>
@@ -10,12 +9,8 @@
     <div>
         <button id="submit" style="width: 100%" onClick="image()">Submit</button>
     </div>
-    <hr />
-    <div>
+    <div style="display: none">
         <p>Result:<span id="result" class="float-right"></span></p>
-    </div>
-    <div>
-        <img id="sdfgdg" alt="image" />
     </div>
 </div>
 
