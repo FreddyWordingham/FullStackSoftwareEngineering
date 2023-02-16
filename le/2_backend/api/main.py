@@ -1,18 +1,19 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, Response
 import cv2
 import numpy as np
 
 from . import colour
 from . import mandlebrot
+from . import settings
 
 
 app = FastAPI()
 
 
-@app.get("/")
-async def index():
-    return "Hello, world!"
+@app.get("/", response_class=HTMLResponse)
+async def index(request: Request):
+    return settings.TEMPLATES.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/hello/{name}")
