@@ -1,7 +1,5 @@
 import numpy as np
 
-from . import colour
-
 
 def sample(c, max_iters):
     z = 0
@@ -15,28 +13,11 @@ def sample(c, max_iters):
         return n
 
 
-def sample_area(x_min, x_max, y_min, y_max, max_iters, width, height):
-    x = np.linspace(x_min, x_max, width)
-    y = np.linspace(y_min, y_max, height)
+def sample_area(real_start, real_end, imag_start, image_end, max_iters, width, height):
+    x = np.linspace(real_start, real_end, width)
+    y = np.linspace(imag_start, image_end, height)
     mandelbrot_set = np.empty((height, width))
     for i in range(height):
         for j in range(width):
             mandelbrot_set[i, j] = sample(x[j] + y[i] * 1j, max_iters)
     return mandelbrot_set
-
-
-def plot(
-    x_min,
-    x_max,
-    y_min,
-    y_max,
-    start_hex,
-    end_hex,
-    max_iters,
-    width,
-    height,
-):
-    mandelbrot_set = sample_area(x_min, x_max, y_min, y_max, width, height, max_iters)
-    return np.vectorize(
-        lambda x: colour.interpolate_linear(start_hex, end_hex, x / max_iters)
-    )(mandelbrot_set)
