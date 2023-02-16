@@ -6,7 +6,7 @@ body {
 .flex-container {
     display: flex;
     justify-content: center; /* align horizontally */
-    align-items: bottom; /* align vertically */
+    align-items: end; /* align vertically */
     height: 100vh;
 }
 
