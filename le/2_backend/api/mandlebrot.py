@@ -3,7 +3,7 @@ import numpy as np
 from . import colour
 
 
-def sample(c, max_iters=100):
+def sample(c, max_iters):
     z = 0
     n = 0
     while abs(z) <= 2 and n < max_iters:
@@ -15,7 +15,7 @@ def sample(c, max_iters=100):
         return n
 
 
-def sample_area(x_min, x_max, y_min, y_max, width=1000, height=1000, max_iters=100):
+def sample_area(x_min, x_max, y_min, y_max, max_iters, width, height):
     x = np.linspace(x_min, x_max, width)
     y = np.linspace(y_min, y_max, height)
     mandelbrot_set = np.empty((height, width))
@@ -32,9 +32,9 @@ def plot(
     y_max,
     start_hex,
     end_hex,
-    width=1000,
-    height=1000,
-    max_iters=100,
+    max_iters,
+    width,
+    height,
 ):
     mandelbrot_set = sample_area(x_min, x_max, y_min, y_max, width, height, max_iters)
     return np.vectorize(

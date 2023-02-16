@@ -6,7 +6,6 @@ from pydantic import BaseModel
 import cv2
 import numpy as np
 
-from . import colour
 from . import mandlebrot
 from . import settings
 
@@ -38,23 +37,30 @@ async def hello(name: str):
 class SampleInput(BaseModel):
     real: float
     imag: float
+    max_iters: int
 
 
 @app.post("/sample")
 async def sample(input: SampleInput):
-    return mandlebrot.sample(input.real + input.imag * 1j)
+    return mandlebrot.sample(input.real + input.imag * 1j, input.max_iters)
 
 
-@app.get("/col/{re}/{im}/{start_hex}/{end_hex}", response_class=HTMLResponse)
-async def col(re: float, im: float, start_hex: str, end_hex: str):
-    print(re, im, start_hex, end_hex)
-    ans = mandlebrot.sample(re + im * 1j)
-    print(ans)
-    max_iter = 100
-    col = colour.interpolate_linear(f"{start_hex}", f"{end_hex}", ans / max_iter)
-    print(col)
-    html = f"<body style='background-color: {col}'><h1>{col}</h1></body>"
-    return html
+class ColInput(BaseModel):
+    real: float
+    imag: float
+    max_iters: int
+    hex_start: str
+    hex_end: str
+
+
+@app.post("/col")
+async def col(input: ColInput):
+    num_iters = mandlebrot.sample(input.real + input.imag * 1j, input.max_iters)
+    rgb_start = hex_to_rgb(input.hex_start)
+    rgb_end = hex_to_rgb(input.hex_end)
+    rgb_sample = lerp_colour(rgb_start, rgb_end, num_iters / input.max_iters)
+    hex_sample = rgb_to_hex(rgb_sample)
+    return {"numIters": num_iters, "col": hex_sample}
 
 
 @app.get("/area/{min_re}/{max_re}/{min_im}/{max_im}")
@@ -83,6 +89,17 @@ async def plot(
     return Response(im.tobytes(), headers=headers, media_type="image/png")
 
 
-def hex_to_rgb(hex_code):
-    hex_code = hex_code.lstrip("#")
-    return list(int(hex_code[i : i + 2], 16) for i in (0, 2, 4))
+def hex_to_rgb(hex):
+    hex = hex.lstrip("#")
+    return list(int(hex[i : i + 2], 16) for i in (0, 2, 4))
+
+
+def lerp_colour(col_a, col_b, t):
+    r = int((1 - t) * col_a[0] + t * col_b[0])
+    g = int((1 - t) * col_a[1] + t * col_b[1])
+    b = int((1 - t) * col_a[2] + t * col_b[2])
+    return (r, g, b)
+
+
+def rgb_to_hex(rgb):
+    return "#{:02x}{:02x}{:02x}".format(*rgb)
