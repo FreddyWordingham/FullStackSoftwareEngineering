@@ -1,6 +1,10 @@
+body {
+    font-family: "Roboto", sans-serif;
+}
+
 .flex-container {
     display: flex;
-    justify-content: center; /* align item horizontally */
-    align-items: center; /* align item vertically */
+    justify-content: center; /* align horizontally */
+    align-items: center; /* align vertically */
     height: 100vh;
 }
