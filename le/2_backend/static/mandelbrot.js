@@ -15,12 +15,15 @@ function sample() {
             max_iters: maxIters,
         }),
     };
+    document.getElementById("submit").disabled = true;
     fetch(url, params)
         .then((response) => response.json())
         .then((data) => {
             document.getElementById("result").innerHTML = data;
+            document.getElementById("submit").disabled = false;
         })
         .catch((error) => {
+            document.getElementById("submit").disabled = false;
             console.log("ERROR!");
             console.log(error);
         });
@@ -47,13 +50,16 @@ function col() {
             hex_end: hexEnd,
         }),
     };
+    document.getElementById("submit").disabled = true;
     fetch(url, params)
         .then((response) => response.json())
         .then((data) => {
             document.getElementById("result").innerHTML = data.numIters;
             document.body.style.backgroundColor = data.col;
+            document.getElementById("submit").disabled = false;
         })
         .catch((error) => {
+            document.getElementById("submit").disabled = false;
             console.log("ERROR!");
             console.log(error);
         });
@@ -84,13 +90,16 @@ function image() {
             hex_end: hexEnd,
         }),
     };
+    document.getElementById("submit").disabled = true;
     fetch(url, params)
         .then((response) => response.blob())
         .then((blob) => {
             const objectURL = URL.createObjectURL(blob);
             document.body.style.backgroundImage = `url(${objectURL})`;
+            document.getElementById("submit").disabled = false;
         })
         .catch((error) => {
+            document.getElementById("submit").disabled = false;
             console.log("ERROR!");
             console.log(error);
         });
