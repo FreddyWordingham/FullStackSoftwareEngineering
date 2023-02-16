@@ -1,0 +1,6 @@
+.flex-container {
+    display: flex;
+    justify-content: center; /* align item horizontally */
+    align-items: center; /* align item vertically */
+    height: 100vh;
+}
