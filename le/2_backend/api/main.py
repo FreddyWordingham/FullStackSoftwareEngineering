@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 import cv2
 import numpy as np
 
@@ -34,10 +35,14 @@ async def hello(name: str):
     return f"Hello, {name}!"
 
 
-@app.get("/sample/{re}/{im}")
-async def sample(re: float, im: float):
-    ans = mandlebrot.sample(re + im * 1j)
-    return f"({re},{im}) == {ans}"
+class SampleInput(BaseModel):
+    real: float
+    imag: float
+
+
+@app.post("/sample")
+async def sample(input: SampleInput):
+    return mandlebrot.sample(input.real + input.imag * 1j)
 
 
 @app.get("/col/{re}/{im}/{start_hex}/{end_hex}", response_class=HTMLResponse)
