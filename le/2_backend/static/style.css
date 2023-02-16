@@ -8,3 +8,8 @@ body {
     align-items: center; /* align vertically */
     height: 100vh;
 }
+
+.float-right {
+    width: 100px;
+    float: right;
+}
