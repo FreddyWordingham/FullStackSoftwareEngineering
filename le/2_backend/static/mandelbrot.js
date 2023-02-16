@@ -63,6 +63,7 @@ function image() {
     const real = document.getElementById("real").value;
     const imag = document.getElementById("imag").value;
     const delta = document.getElementById("delta").value;
+    const resolution = document.getElementById("resolution").value;
     const hexStart = document.getElementById("hexStart").value;
     const hexEnd = document.getElementById("hexEnd").value;
     const maxIters = document.getElementById("maxIters").value;
@@ -77,6 +78,7 @@ function image() {
             real: real,
             imag: imag,
             delta: delta,
+            resolution: resolution,
             max_iters: maxIters,
             hex_start: hexStart,
             hex_end: hexEnd,

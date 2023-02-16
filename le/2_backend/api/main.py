@@ -67,6 +67,7 @@ class ImageInput(BaseModel):
     real: float
     imag: float
     delta: float
+    resolution: int
     max_iters: int
     hex_start: str
     hex_end: str
@@ -79,8 +80,8 @@ async def image(input: ImageInput):
     imag_start = input.imag - input.delta
     imag_end = input.imag + input.delta
 
-    width = 100
-    height = 100
+    width = input.resolution
+    height = input.resolution
 
     sample = mandlebrot.sample_area(
         real_start,
