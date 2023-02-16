@@ -2,15 +2,11 @@
 
 <div>
     <h1>Hello, world!</h1>
-    <div>
-        <label for="real">Real</label>
-        <input id="real" class="float-right" type="number" value="0.0" />
+    <div style="display: flex">
+        <div style="margin: 10px">{% include "components/position.html" %}</div>
+        <div style="margin: 10px">{% include "components/colour.html" %}</div>
     </div>
-    <p></p>
-    <div>
-        <label for="imag">Imag</label>
-        <input id="imag" class="float-right" type="number" value="0.0" />
-    </div>
+
     <p></p>
     <div>
         <button id="submit" style="width: 100%" onClick="sample()">Submit</button>
