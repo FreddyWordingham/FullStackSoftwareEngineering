@@ -15,6 +15,10 @@
     <div>
         <button id="submit" style="width: 100%" onClick="sampleMandelbrot()">Submit</button>
     </div>
+    <hr />
+    <div>
+        <p>Result:<span id="result" class="float-right"></span></p>
+    </div>
 </div>
 
 <script>
@@ -26,8 +30,7 @@
         fetch(url)
             .then((response) => response.json())
             .then((data) => {
-                console.log("Success");
-                console.log(data);
+                document.getElementById("result").innerHTML = data;
             })
             .catch((error) => {
                 console.log("ERROR!");
