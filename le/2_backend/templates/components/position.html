@@ -7,3 +7,24 @@
     <label for="imag">Imag</label>
     <input id="imag" class="float-right" type="number" value="-0.01234831" />
 </div>
+<p></p>
+<div>
+    <button onClick="random()">Random</button>
+</div>
+
+<script>
+    function random() {
+        const gooduns = [
+            [-1.373543, -0.01234831],
+            [-0.777120445, 0.126857239],
+            [-0.101096374, 0.956286515],
+            [-1.47473975, 0.19145264],
+        ];
+        const goodun = gooduns[Math.floor(Math.random() * gooduns.length)];
+
+        var real = document.getElementById("real");
+        var imag = document.getElementById("imag");
+        real.value = goodun[0];
+        imag.value = goodun[1];
+    }
+</script>
