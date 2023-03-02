@@ -3,7 +3,7 @@ function sample() {
     const imag = document.getElementById("imag").value;
     const maxIters = document.getElementById("maxIters").value;
 
-    const url = `http://localhost:8000/sample`;
+    const url = "http://localhost:8000/sample";
     const params = {
         method: "POST",
         headers: {
